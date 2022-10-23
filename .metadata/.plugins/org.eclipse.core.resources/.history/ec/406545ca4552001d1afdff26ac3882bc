@@ -1,0 +1,26 @@
+package essence.ch6;
+
+class Data { int x; }
+
+class PrimitiveParamEx {
+
+	public static void main(String[] args) {
+		Data d = new Data();
+		d.x = 10;
+		System.out.println("main() : x = " + d.x);
+		
+		/*
+		 * 1. change 함수가 호출되면서 d.x가 change메서드의 매개변수 x에 복사됨.
+		 * 2. change메서드에서 x의 값을 1000으로 변경
+		 * 3. change메서드가 종료되면서 매개변수 x는 스택에서 제거됨
+		 */
+		change(d.x);
+		System.out.println("After change(d.x)");
+		System.out.println("main() : x = " + d.x);
+	}
+	
+	static void change(int x) {
+		x = 1000;
+		System.out.println("change() : x = " + x);
+	}
+}

@@ -1,0 +1,18 @@
+package essence.ch6;
+
+class CallStackTest {
+
+	public static void main(String[] args) {
+		firstMethod();
+
+	}
+	
+	static void firstMethod() {
+		secondeMethod();
+	}
+	
+	static void secondMethod() {
+		System.out.println("secondeMethod()");
+	}
+
+}
