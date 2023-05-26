@@ -1,0 +1,36 @@
+package essence.ch15;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
+
+class IOEx4 {
+
+	public static void main(String[] args) {
+		byte[] inSrc = {0, 1,2 , 3, 4, 5, 6, 7, 8, 9};
+		byte[] outSrc = null;
+		byte[] temp = new byte[4];
+		
+		ByteArrayInputStream input = null;
+		ByteArrayOutputStream output = null;
+		
+		input = new ByteArrayInputStream(inSrc);
+		output = new ByteArrayOutputStream();
+		
+		try {
+			while(input.available() > 0) {
+				int len = input.read(temp); // read() : 배열의 크기만큼 읽어서 배열을 채우고, 읽어 온 데이터의 수를 반환한다. (반환 값은 항상 배열의 크기보다 작거나 같다.)
+				output.write(temp, 0, len); // 읽어 온 만큼만 write한다.
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		outSrc = output.toByteArray();
+		System.out.println("Input Source : " + Arrays.toString(inSrc));
+		System.out.println("temp : " + Arrays.toString(temp));
+		System.out.println("Output Srouce : " + Arrays.toString(outSrc));
+	}
+
+}
